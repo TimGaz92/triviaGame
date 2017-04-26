@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+	<title>Trivia Game </title>
+</head>
+<body>
+	<div id="full" class="container">
+		<div class="row">
+			<div id="top" class="col-md-12">
+			</div>
+		</div>
+		<div class="row">
+			<div id="scoreDiv" class="col-md-2">
+				<p id="scoreText">User Score = </p>
+			</div>
+			<div id="questionDiv" class="col-md-8">
+				<p id="questionText">question goes here </p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+			</div>
+			<div id="answerOneDiv" class="col-md-8">
+				<p id="answerOneText">answer one</p>
+			</div>
+			<button id="AnswerOneBTN" class="btn btn-danger">1</button>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+			</div>
+			<div id="answerTwoDiv" class="col-md-8">
+				<p id="answerTwoText">answer two</p>
+			</div>
+			<button id="answerTwoBTN" class="btn btn-danger">2</button>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+			</div>
+			<div id="answerThreeDiv" class="col-md-8">
+				<p id="answerThreeText">answer three</p>
+			</div>
+			<button id="answerThreeBTN" class="btn btn-danger">3</button>
+		</div>
+			<div class="row">
+			<div class="col-md-2">
+			</div>
+			<div id="answerFourDiv" class="col-md-8">
+				<p id="answerFourText">answer Four</p>
+			</div>
+			<button id="answerFourBTN" class="btn btn-danger">4</button>
+		</div>
+		<button id="startBTN" class="btn btn-danger">NEXT</button>
+			<div class="col-md-2">
+				<p id="clock"><strong> </strong></p>
+			</div>
+			<hr>
+		<div class="row">
+			<div class="col-md-12">
+				<h1> TRIVIA GAME!</h1>
+			</div>
+		</div>
+		<div class="row">
+		<hr>
+			<div id="instructions" class="col-md-12">
+				<p>you have 100 seconds to answer all 10 questions <br>
+					Each correct question will increase your score by one <br>
+					Press the Next button to see the next question<br>
+					Good Luck!</p>
+			</div>
+		</div>
+	</div>
+<!-- 	<script type="text/javascript" src = "./script.js">
+	</script> -->
+<script type="text/javascript">
+	var userScore = 1;
+	var correct = 0;
+	var questionRoll = 1;
+	var asked = [0];
+	var i = 0;
+	var timerNumber = 60;
+  	var timerId;
+  	var displayNumber;
+
+			var interval = setInterval(function() {
+   				timerNumber--;
+   					$("#clock").html("seconds left: " + timerNumber);
+    			if (timerNumber == 0) {
+        		alert("time's up i'm afraid, you've gotten  " + correct + "question right");
+        		clearInterval(interval);
+    			}//end of it 
+			}, 1000);// end of timer
+$("#startBTN").on("click", function(){
+		 // questionRoll = Math.floor((Math.random() * 5) + 1);	
+		 $("#scoreText").text("Score = " + userScore);
+//for loop to see if the question has already been asked
+// for (var i = asked.length - 1; i >= 0; i--) 
+
+ if (questionRoll === 1) {
+ 	console.log(" question roll: " + questionRoll);
+ 	$("#questionText").text("1. This Brewery just turned 169 years old ");
+ 		$("#answerOneText").text("Leinenkugels");
+ 		 	$("#AnswerOneBTN").on("click", function(){
+ 				console.log("correct answer one -  question 1" );
+ 				 $("#scoreText").text("Score = 1");
+ 				questionRoll++;
+ 				asked.push(1);
+ 				// console.log(asked);
+
+ 			});//end of correct answer function
+ 		$("#answerTwoText").text("Budwiser");
+ 			$("#answerTwoBTN").on("click", function(){
+ 				console.log("wrong answer 2 - question 1");
+ 				// questionRoll = Math.floor((Math.random() * 4) + 1);
+ 				// $("#scoreText").text("Score = " + userScore);
+ 				 asked.push(1);
+ 				// console.log(asked);
+ 			});
+ 		$("#answerThreeText").text("Weyerbacher");
+ 			$("#answerThreeBTN").on("click", function(){
+ 				console.log("wrong answer 3 - question 1 ");
+ 				// questionRoll = Math.floor((Math.random() * 4) + 1);
+ 				// $("#scoreText").text("Score = " + userScore); 	
+ 				asked.push(1);
+ 				userScore = 0;				
+ 				// console.log(asked); 							
+ 			});
+ 		$("#answerFourText").text("5th Dimension Brewing co.");
+ 			$("#answerFourBTN").on("click", function(){
+ 				console.log("wrong answer 4 - question 1 ");
+ 				// questionRoll = Math.floor((Math.random() * 4) + 1);
+ 				// $("#scoreText").text("Score = " + userScore); 
+ 				asked.push(1);		
+ 				// console.log(asked); 								
+ 			});
+ }//end of if statement
+ else{
+
+ }//end of question 1 
+
+ if (questionRoll === 2) {
+ 	console.log(" question roll: " + questionRoll); 	
+ 	$("#questionText").text("2. Which desert is the largest in the world?");
+ 		$("#answerOneText").text("Sahara Desert");
+ 		 	$("#AnswerOneBTN").on("click", function(){
+ 				console.log("wrong answer 1 - question 2 ");
+ 				// userScore--;
+ 				// questionRoll = Math.floor((Math.random() * 4) + 1);
+ 				// console.log("new question question number "+ questionRoll);
+ 				// $("#scoreText").text("Score = " + userScore);
+ 				asked.push(2);		
+ 				// console.log(asked); 				
+ 			});//end of  answer function
+ 		$("#answerTwoText").text("Gobi Desert");
+ 			$("#answerTwoBTN").on("click", function(){
+ 				console.log("wrong answer 2 - question 2 ");
+ 				 // userScore--;
+ 				 // questionRoll = Math.floor((Math.random() * 4) + 1);
+ 				 // console.log("new question question number "+ questionRoll);
+ 				 // $("#scoreText").text("Score = " + userScore); 	
+ 				asked.push(2);				
+ 				// console.log(asked);  				 
+ 			});
+ 		$("#answerThreeText").text("Mojave Desert");
+ 			$("#answerThreeBTN").on("click", function(){
+ 				console.log("wrong answer 3 - question 2 ");
+ 				// userScore--;
+ 				// questionRoll = Math.floor((Math.random() * 4) + 1);
+ 				// console.log("new question question number "+ questionRoll);
+ 				// $("#scoreText").text("Score = " + userScore); 	
+ 				asked.push(2);			
+ 				// console.log(asked);  							
+ 			});
+ 		$("#answerFourText").text("Antartic polar Desert");
+ 			$("#answerFourBTN").on("click", function(){
+ 				console.log("correct answer 4 - question 2 ");
+ 				 $("#scoreText").text("Score = 2");
+ 				questionRoll++;
+ 				// questionRoll = Math.floor((Math.random() * 4) + 1);
+ 				// console.log("new question question number "+ questionRoll);
+ 				// $("#scoreText").text("Score = " + userScore); 
+ 				asked.push(2);
+ 				$("#scoreText").text("Score = 2");		
+ 				// console.log(asked);  								
+ 			});
+ }//end of if statement
+ else{
+
+ }//end of question 2 
+
+if (questionRoll === 3) {
+	console.log(" question roll: " + questionRoll);
+ 	$("#questionText").text("3. CERN launched the first website in what year?");
+ 		$("#answerOneText").text("1999");
+ 		 	$("#AnswerOneBTN").on("click", function(){
+ 				console.log("wrong answer 1 - question 3 ");
+ 				// questionRoll = Math.floor((Math.random() * 4) + 1);
+ 				// $("#scoreText").text("Score = " + userScore);
+ 				asked.push(3);
+ 				// console.log(asked);  				
+ 			});//end of  answer function
+ 		$("#answerTwoText").text("1990");
+ 			$("#answerTwoBTN").on("click", function(){
+ 				console.log("correct answer 2 - question 3 ");
+ 				 $("#scoreText").text("Score = 3");
+ 				questionRoll++;
+ 				// questionRoll = Math.floor((Math.random() * 4) + 1);
+ 				// $("#scoreText").text("Score = " + userScore);
+ 				asked.push(3);
+ 				// console.log(asked);  				
+ 			});
+ 		$("#answerThreeText").text("1894");
+ 			$("#answerThreeBTN").on("click", function(){
+ 				console.log("wrong answer 3 - question 3"); 				
+ 				// userScore--;
+ 				// questionRoll = Math.floor((Math.random() * 4) + 1);
+ 				// $("#scoreText").text("Score = " + userScore); 	
+ 				asked.push(3);
+ 				// console.log(asked);  							
+ 			});
+ 		$("#answerFourText").text("2002");
+ 			$("#answerFourBTN").on("click", function(){
+ 				console.log("wrong answer 4 - question 3 ");		
+ 				// userScore--;
+ 				// questionRoll = Math.floor((Math.random() * 4) + 1);
+ 				// console.log("new question question number "+ questionRoll);
+ 				// $("#scoreText").text("Score = " + userScore); 
+ 				asked.push(3);
+ 				// console.log(asked);  								
+ 			});
+ }//end of if statement
+else{
+
+}//end of question 3 
+if (questionRoll === 4) {
+	console.log(" question roll: " + questionRoll);
+ 	$("#questionText").text("4. who wrote the declaration of independence?");
+ 		$("#answerOneText").text("Francis Scott Key");
+ 		 	$("#AnswerOneBTN").on("click", function(){
+ 				console.log("wrong answer 1 - question 4 ");
+ 				// userScore--;
+ 				// questionRoll = Math.floor((Math.random() * 4) + 1);
+ 				// $("#scoreText").text("Score = " + userScore);
+ 				asked.push(4);
+ 				// console.log(asked);  				
+ 			});//end of  answer function
+ 		$("#answerTwoText").text("Alexander Hamilton");
+ 			$("#answerTwoBTN").on("click", function(){
+ 				console.log("wrong answer 2 - question 4 ");
+ 				// userScore--;
+ 				// questionRoll = Math.floor((Math.random() * 4) + 1);
+ 				// console.log("new question question number "+ questionRoll);
+ 				// $("#scoreText").text("Score = " + userScore); 
+ 				asked.push(4);
+ 				// console.log(asked);  					
+ 			});
+ 		$("#answerThreeText").text("some guy");
+ 			$("#answerThreeBTN").on("click", function(){
+ 				console.log("wrong answer 3 - question 4 ");
+ 				// userScore--;
+ 				// questionRoll = Math.floor((Math.random() * 4) + 1); 	
+ 				asked.push(4);
+ 				// console.log(asked);  							
+ 			});
+ 		$("#answerFourText").text("Francis Bellamy");
+ 			$("#answerFourBTN").on("click", function(){
+ 				console.log("correct answer 4 - question 4 ");
+ 				$("#scoreText").text("Score = 4");
+ 				correct++;
+ 				// questionRoll = Math.floor((Math.random() * 4) + 1);
+ 				// $("#scoreText").text("Score = " + userScore); 		
+ 				asked.push(4);
+ 				// console.log(asked);  									
+ 			});
+ }//end of if statement
+ else{
+
+ }// end of question 4 
+if (questionRoll === 5) {
+	console.log(" question roll: " + questionRoll);
+ 	$("#questionText").text("5. what was the name of the Nuclear development program in WWII");
+ 		$("#answerOneText").text("Manhattan Project");
+ 		 	$("#AnswerOneBTN").on("click", function(){
+ 				console.log("correct answer one -  question 5" );
+ 				 $("#scoreText").text("Score = 5");
+ 				questionRoll = 6;
+ 				asked.push(5);
+ 			});//end of correct answer function
+ 		$("#answerTwoText").text("Denver Project");
+ 			$("#answerTwoBTN").on("click", function(){
+ 				console.log("wrong answer 2 - question 5");
+ 				 asked.push(5);
+ 			});
+ 		$("#answerThreeText").text("Las vegas initiative");
+ 			$("#answerThreeBTN").on("click", function(){
+ 				console.log("wrong answer 3 - question 5 ");	
+ 				asked.push(5);							
+ 			});
+ 		$("#answerFourText").text("operation bigger boom 2 electric boogaloo");
+ 			$("#answerFourBTN").on("click", function(){
+ 				console.log("wrong answer 4 - question 5 ");
+ 				asked.push(5);								
+ 			})
+ }//end of if statement
+else{
+}// end of question 5 
+
+if (questionRoll === 6) {
+ 	console.log(" question roll: " + questionRoll);	
+ 	$("#questionText").text("6. the battle of waterloo occured in what year");
+ 		$("#answerOneText").text("2016");
+ 		 	$("#AnswerOneBTN").on("click", function(){
+ 				console.log("wrong answer 1 - question 6 ");
+ 				asked.push(6);				
+ 			});//end of  answer function
+ 		$("#answerTwoText").text("1885");
+ 			$("#answerTwoBTN").on("click", function(){
+ 				console.log("wrong answer 2 - question 6 ");
+ 				asked.push(6);				 				 
+ 			});
+ 		$("#answerThreeText").text("1776");
+ 			$("#answerThreeBTN").on("click", function(){
+ 				console.log("wrong answer 3 - question 6 ");	
+ 				asked.push(6);			 							
+ 			});
+ 		$("#answerFourText").text("1815");
+ 			$("#answerFourBTN").on("click", function(){
+ 				console.log("correct answer 4 - question 6 ");
+ 				 $("#scoreText").text("Score = 6");
+ 				questionRoll = 7;
+ 				asked.push(6);
+ 				$("#scoreText").text("Score = 6");									
+ 			});
+} //end of if statement
+else{
+}// end of question 6 
+if (questionRoll === 7) {
+ 	console.log(" question roll: " + questionRoll);	
+ 	$("#questionText").text("7. Who organized the Boston Tea Party?");
+ 		$("#answerOneText").text("Oprah");
+ 		 	$("#AnswerOneBTN").on("click", function(){
+ 				console.log("wrong answer 1 - question 7 ");
+ 				asked.push(7);				
+ 			});//end of  answer function
+ 		$("#answerTwoText").text("Samuel Adams");
+ 			$("#answerTwoBTN").on("click", function(){
+ 				console.log("correct answer 2 - question 7 ");
+ 				 $("#scoreText").text("Score = 7");
+ 				questionRoll++;
+ 				asked.push(7);			
+ 			});
+ 		$("#answerThreeText").text("Jack Daniels");
+ 			$("#answerThreeBTN").on("click", function(){
+ 				console.log("wrong answer 3 - question 3"); 					
+ 				asked.push(7);
+						
+ 			});
+ 		$("#answerFourText").text("Gandalf the Grey");
+ 			$("#answerFourBTN").on("click", function(){
+ 				console.log("wrong answer 4 - question 7 ");		
+ 				asked.push(7);								
+ 			});
+ }//end of if statement
+else{
+}//end of question 7
+if (questionRoll === 8) {
+ 	console.log(" question roll: " + questionRoll);	
+ 	$("#questionText").text("8. Who was the first Tudor monarch in England?");
+ 		$("#answerOneText").text("Henry VIII");
+ 		 	$("#AnswerOneBTN").on("click", function(){
+ 				console.log("wrong answer 1 - question 8 ");
+ 				asked.push(8);				
+ 			});//end of  answer function
+ 		$("#answerTwoText").text("I have no idea");
+ 			$("#answerTwoBTN").on("click", function(){
+ 				console.log("wrong answer 2 - question 8 ");
+ 				asked.push(8);					
+ 			});
+ 		$("#answerThreeText").text("John Snow");
+ 			$("#answerThreeBTN").on("click", function(){
+ 				console.log("wrong answer 3 - question 8 ");
+ 				asked.push(8);							
+ 			});
+ 		$("#answerFourText").text("Henry VII");
+ 			$("#answerFourBTN").on("click", function(){
+ 				console.log("correct answer 4 - question 8 ");
+ 				$("#scoreText").text("Score = 8");
+ 				correct++;		
+ 				questionRoll ++;
+ 				asked.push(8);									
+ 			});
+ }//end of if statement
+ else{
+ }// end of question 8
+
+if (questionRoll === 9) {
+ 	console.log(" question roll: " + questionRoll);	
+ 	$("#questionText").text("9. The Spanish Civil war began in what year?");
+ 		$("#answerOneText").text("1935");
+ 		 	$("#AnswerOneBTN").on("click", function(){
+ 				console.log("wrong answer 1 - question 9 ");
+ 				asked.push(9);				
+ 			});//end of  answer function
+ 		$("#answerTwoText").text("1867");
+ 			$("#answerTwoBTN").on("click", function(){
+ 				console.log("wrong answer 2 - question 9 ");
+ 				asked.push(9);				 				 
+ 			});
+ 		$("#answerThreeText").text("1900");
+ 			$("#answerThreeBTN").on("click", function(){
+ 				console.log("wrong answer 3 - question 9 ");	
+ 				asked.push(9);			 							
+ 			});
+ 		$("#answerFourText").text("1936");
+ 			$("#answerFourBTN").on("click", function(){
+ 				console.log("correct answer 4 - question 9 ");
+ 				 $("#scoreText").text("Score = 9");
+ 				questionRoll++;
+ 				asked.push(9);								
+ 			});
+} //end of if statement
+else{
+}// end of question 9
+if (questionRoll >= 10) {
+ 	console.log(" question roll: " + questionRoll);	
+ 	$("#questionText").text("10. Who was the first US president to declare war?");
+ 		$("#answerOneText").text("James Madison");
+ 		 	$("#AnswerOneBTN").on("click", function(){
+ 				console.log("correct answer one -  question 10" );
+ 				 $("#scoreText").text("Score = 10");
+ 				asked.push(10);
+ 						$("#questionText").text("you got 10/10 right, congratulations");
+						$("#answerFourText").text("");
+						$("#answerThreeText").text("");
+						$("#answerTwoText").text("");
+						$("#answerOneText").text("");
+ 			});//end of correct answer function
+ 		$("#answerTwoText").text("George Washington");
+ 			$("#answerTwoBTN").on("click", function(){
+ 				console.log("wrong answer 2 - question 10");
+ 				 asked.push(10);
+ 			});
+ 		$("#answerThreeText").text("Abraham Lincoln");
+ 			$("#answerThreeBTN").on("click", function(){
+ 				console.log("wrong answer 3 - question 10 ");	
+ 				asked.push(10);							
+ 			});
+ 		$("#answerFourText").text("FDR");
+ 			$("#answerFourBTN").on("click", function(){
+ 				console.log("wrong answer 4 - question 10 ");
+ 				asked.push(10);								
+ 			})
+ }//end of if statement
+else{
+}// end of question 10 
+
+
+ }); 
+
+// //problem with this is thay it's running every possible iteration of itself at the same time. 
+// //ie it's asked questions 1-4 all at once. 
+
+</script>
+</body>
+</html>
